@@ -13,6 +13,10 @@ model_id = os.getenv("MODEL_ID", "gemini-2.5-flash")
 def main():
     print("Hello from flick2code!")
 
+    system_prompt = (
+        "You are robot"
+    )
+    
     if len(sys.argv) < 2:
         print("Please provide a model ID as a command-line argument.")
         sys.exit(1)
@@ -28,7 +32,8 @@ def main():
 
     response = client.models.generate_content(
         model=model_id,
-        contents=messages
+        contents=messages,
+        config=types.GenerateContentConfig(system_instruction=system_prompt)
     )
     print(response.text)
     messages.append(types.Content(role="model", parts=[types.Part(text=response.text)]))
