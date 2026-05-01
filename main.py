@@ -16,8 +16,8 @@ model_id = os.getenv("MODEL_ID", "gemini-2.5-flash")
 
 def main():
     print("Hello from flick2code! \n")
-    # working_directory = os.getcwd()
-    working_directory = "/home/ayra/Documents/code/flick2code/calculator"
+    working_directory = os.getcwd()
+    # working_directory = "/home/ayra/Documents/code/flick2code/calculator"
     
     if len(sys.argv) < 2:
         print("Please provide a prompt as a command-line argument.")
